@@ -1,0 +1,11 @@
+1)what is classloader
+2)what are the memory allocations available in java
+3)will the program run if i write static public void main
+4)what is default value stoerd in local variable
+5)what is the output of the following code segment
+6)what is an association
+7)define copy constructor in java
+8)what is a marker interface 
+9)what is object cloning
+10)
+11)

@@ -1,0 +1,38 @@
+cd sqlite (foldername)
+sqlite3
+start sqlite database
+.open univ.db(open foldername)
+select name from students;
+it is show students all name
+select roll,name from students;
+it is show roll number and  name
+select roll,name,city,deptno from students;
+it is show rollnumber ,name,city,deptno
+
+select *from student;
+select * from dept;
+select deptno from students;
+
+select distinct from students;
+select distinct name from students;
+select distinct roll from students;
+select distinct name,deptno from students;
+select *from students where city='Kharela';
+select *from students where city<>'Kharela';
+select *from students where  deptno>20;
+select *from students where  deptno>=30;
+select *from students where deptno>=20 and city='Kharela';
+select *from students where  deptno>=10 'A%';
+select *from students where  deptno>=10 '%y';
+select *from students where  deptno>=10 '%m%';
+select * from students where deptno between 10 and 30;
+Select * from students where roll between 5 and 10;
+select *from students where city in ('Delhi','jaipur');
+select *from students where city not in ('Delhi','Kharela');
+select* from students where city='Delhi' or city='Kharela';
+select*from dept order by dname;
+select*from dept;
+select*from dept order by dname desc;
+select*from students order by name;
+
+

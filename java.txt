@@ -1,0 +1,91 @@
+1)why java is not 100% object-oriented ? 
+ans Because of Primitive data types namely
+	boolean , byte ,char,int ,floot,double,long,short
+To make them oo we have wrapper classes which actually "wrap" the primitive data type
+ into an object of that class.
+2) why pointers are not used in java ?
+ans Because :
+	1)They are unsafe .
+	2)Increases the complexity of the program and since java is known for its 
+	 simplicity of code ,adding the concept of pointers will be contradicting .
+	3)Since JVM is responsible for implicit memory allocation, thus in order to 
+	 avoid direct access to memory by the user ,pointers are discouraged in java 
+3) what is JIT compiler in java ?
+ans java source code into jdk(javac.ece)into Byte codes(jre interpreter +jit compiler)into Machine codes
+or
+The Just-In-Time (JIT) compiler is a component of the Java™ Runtime Environment that improves the performance of Java applications at run time. Java programs consists of classes, which contain platform-neutral bytecodes that can be interpreted by a JVM on many different computer
+4) why String is immutable in java ?
+ans The String is immutable in Java because of the security, synchronization and concurrency, caching, and class loading.
+>String pool requires string to be immutable otherwise shared reference can be changed from anywhere.
+
+>security because string is shared on different area like file system,networking connection ect
+>having immutable string allows you to be secure and safe because no one can change reference of string once it gets created.
+5) what is a maker interface ?
+ans 
+It is an empty interface (no field or methods). Examples of marker interface are Serializable, Cloneable and Remote interface. All these interfaces are empty interfaces. 
+or
+A marker interface can be defined as interface having no data member and member functions.In simpler terms an empty interface is called the marker interface
+Example Serializable,Cloneable
+6) can you override a private or static method in java ?
+ANS:-No, we cannot override static methods because method overriding is based on dynamic binding at runtime and the static methods are bonded using static binding at compile time. So, we cannot override static methods.
+The calling of method depends upon the type of object that calls the static method
+7)Does "finally " always execute in java?
+ans :-Java finally block is always executed whether an exception is handled or not. Therefore, it contains all the necessary statements that need to be printed regardless of the exception occurs or not.
+
+Note: If you don't handle the exception, before terminating the program, JVM executes finally block (if any).
+
+8)Why use Java finally block?
+finally block in Java can be used to put "cleanup" code such as closing a file, closing connection, etc.
+The important statements to be printed can be placed in the finally block.
+The finally block follows the try-catch block.
+
+8)what methods Does the Object class have?
+9)How can you make a class immutable?
+There are many immutable classes like String, Boolean, Byte, Short, Integer, Long, Float, Double etc. In short, all the wrapper classes and String class is immutable. We can also create immutable class by creating final class that have final data members as the example given below:
+ demo
+public final class Employee  
+{    
+final String pancardNumber;    
+public Employee(String pancardNumber)  
+{    
+this.pancardNumber=pancardNumber;    
+}  
+public String getPancardNumber(){    
+return pancardNumber;    
+}    
+}    
+public class ImmutableDemo  
+{  
+public static void main(String ar[])  
+{  
+Employee e = new Employee("ABC123");  
+String s1 = e.getPancardNumber();  
+System.out.println("Pancard Number: " + s1);  
+}  
+}  
+10)what is singleton class in java and how can we make a class singleton?
+ans Singleton class is a class whose only one instance can be created at any given time , in one JVM
+
+11)Wrapper classes in Java
+ans:-The wrapper class in Java provides the mechanism to convert primitive into object and object into primitive.
+1)what is the need for oops?
+2)what are the main features of oops?
+3)what is inheritance
+4)what is Encapsulation
+5)what is polymorphism
+6)what is Abstraction
+7)what is method
+8)what is constructor
+9)what are some advantages of using oops
+10)why is oops so popular?
+11)what is class
+12)what is an object
+13)what is copy constructor
+14)Are there any limitations of interface
+15)what  are the various types of inheritance
+16)what is single inheritance 
+17)multiple inheritances
+18)Multi-level inheritance 
+19)Hiearchical inheritance
+20)Hybrid inheritance
+21)different hiearchical and multi-level

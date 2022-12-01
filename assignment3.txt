@@ -1,0 +1,218 @@
+Q1:-what is Generic in java
+ans:-Generic are a feature that allow a class to be parameterized into suv-types.Generics provide compile time safety and prevent runtime typecasting errors resulting in classCastException. Without generics, a user is forced to use the lowest common base class and then typecast the object,which is highly error prone has no type sfety
+Q2:-What are Gneric Method?
+ans:-Generic method are methods that is type parameterized.
+Q3:-Why Generic is required?
+ans:-Generics helps finding issues during compile time rather than runtime. Generics are parameter for types.
+Q4:-What are generics in c#?
+ans:-Generics refers to the techique of writing the code for a class without specifying the data type(s) that the class works on. it allow you to difine types safe data structures , without commiting to actual data types . it allows writing less but more effective code and provides flexibility and power but the developer needs to be responsible while using it.
+Q5:-What are concepts introduced with java 5?
+ans:- generic ,Enums,Autotations and Static import.
+Q6:-can you create instances of generic type parameters?
+ans:- No you cannot create instances of generic type parameters.
+Q7:-how can you suppress unchecked warning in java?
+ans:-using@Suppress Warnings("unchecked") annotation.
+Q8:-which of the following syntax are correct?
+
+a.LinkedList<Integer> l=new LinkedList<int>();
+b.List<Integer> l=new LinkedList<int>();
+c.LinkedList<Integer> l=new LinkedList<Integer>();
+d.List<Integer> l = new LinkedList<Integer>();
+ans:- c and d are correct.
+Q9:-Can java generics be applied to primitive types?
+ans:-No java generics cannot be applied to primitive types. But you can use wrapper classes of primitive type to use java generics.
+Q10:-which of the following syntax is correct
+ans:- import static java.lang.System.*;
+Q11:-How do you create sub-classes of generic classes?
+ans:-Similar to regular classes and interfaces, you can create sub-types of generic classes or interfaces by extending or implementing from the generic classes or interfaces.
+For example: in Java collections API, ArrayList implements List and Listimplements Collections. The sub-type relation is preserved as long as the type argument does not vary. So, ArrayList implements List and List implements Collections.
+Q12:-what is type erasure?
+ans:-he Type information used for Generic objects is only available at compile time. The compiler removes all the type information when converting to byte-code. This makes the type information unavailable at Runtime and the Generic type is converted to Raw type. The compiler provides checks at compile time to prevent runtime errors for incorrect type information.
+Q13:-Generics
+ans:- Generics introduced in Java 1.5, facilitates strong-typing on the collection objects. Generics defines the object types that the collection can hold.
+
+It provides compile time type-safety and ensures that only the particular type is added in collection and eliminates ClassCastException in runtime.
+Q14:-Is it legal to initialize List like this?
+ans:- LinkedList<Integer> l=new LinkedList<int>();
+No, Generic parameters cannot be primitives.
+Q15:-What is the difference between formal parameter and type parameter?
+ans:-formal parameters used in method declarations, type parameters provide a way for you to re-use the same code with different inputs. The difference is that the inputs to formal parameters are values, while the inputs to type parameters are types.
+Q16:-What are generic types? How are they declared and instantiated?
+ans:-Ans: A generic type is a generic class or interface that is parameterized over types.
+
+Declaration of generic types: A generic class is declared using the format 'class MyClass {...}'. The angle brackets <> is the type parameter section and specifies the type parameters T1, T2 ... for the generic class.
+Instantiation of generic types: You instantiate a generic class using the new keyword as usual, but pass actual types within the parameter section. Example - 'MyClass myClass = new MyClass();'. In Java 7 and later you can eliminate the type and just have the angle brackets <>. Example - 'MyClass myClass = new MyClass<>();'. The empty angular brackets <> syntax is commonly referred to as the Diamond.
+Q17:-Why won't the following code sample compile and how would you fix it?
+ans:-This will raise a compilation error. It is incorrect to pass a List<String> to a method accepting List<Object>. A List<Object> can accept Strings, but t1 can only accept List<Object>.
+Either ls should be changed to List<Object>, or lo should be made Generic: List<? extends Object> lo
+Q18:- Example of a Bounded generic method.
+ans:-static <T extends Number> T processTheNumber(T number){
+
+T result = number;
+
+return result;
+
+}
+Q19:-  Study  Comparator,Comparable and its methods and show 2 examples each.
+ans:-Comparable vs Comparator in Java
+Java provides two interfaces to sort objects using data members of the class: 
+1.Comparable
+2.Comparator
+Using Comparable Interface:-
+A comparable object is capable of comparing itself with another object. The class itself must implements the java.lang.Comparable interface to compare its instances. 
+Consider a Movie class that has members like, rating, name, year. Suppose we wish to sort a list of Movies based on year of release. We can implement the Comparable interface with the Movie class, and we override the method compareTo() of Comparable interface. 
+code :-
+// A Java program to demonstrate use of Comparable
+import java.io.*;
+import java.util.*;
+ 
+// A class 'Movie' that implements Comparable
+class Movie implements Comparable<Movie>
+{
+    private double rating;
+    private String name;
+    private int year;
+ 
+    // Used to sort movies by year
+    public int compareTo(Movie m)
+    {
+        return this.year - m.year;
+    }
+ 
+    // Constructor
+    public Movie(String nm, double rt, int yr)
+    {
+        this.name = nm;
+        this.rating = rt;
+        this.year = yr;
+    }
+ 
+    // Getter methods for accessing private data
+    public double getRating() { return rating; }
+    public String getName()   {  return name; }
+    public int getYear()      {  return year;  }
+}
+ 
+// Driver class
+class Main
+{
+    public static void main(String[] args)
+    {
+        ArrayList<Movie> list = new ArrayList<Movie>();
+        list.add(new Movie("Force Awakens", 8.3, 2015));
+        list.add(new Movie("Star Wars", 8.7, 1977));
+        list.add(new Movie("Empire Strikes Back", 8.8, 1980));
+        list.add(new Movie("Return of the Jedi", 8.4, 1983));
+ 
+        Collections.sort(list);
+ 
+        System.out.println("Movies after sorting : ");
+        for (Movie movie: list)
+        {
+            System.out.println(movie.getName() + " " +
+                               movie.getRating() + " " +
+                               movie.getYear());
+        }
+    }
+}
+Using Comparator:-
+Unlike Comparable, Comparator is external to the element type we are comparing. It’s a separate class. We create multiple separate classes (that implement Comparator) to compare by different members.
+Collections class has a second sort() method and it takes Comparator. The sort() method invokes the compare() to sort objects.
+To compare movies by Rating, we need to do 3 things : 
+1.Create a class that implements Comparator (and thus the compare() method that does the work previously done by compareTo()).
+2.Make an instance of the Comparator class.
+3.Call the overloaded sort() method, giving it both the list and the instance of the class that implements Comparator.
+code:-
+//A Java program to demonstrate Comparator interface
+import java.io.*;
+import java.util.*;
+ 
+// A class 'Movie' that implements Comparable
+class Movie implements Comparable<Movie>
+{
+    private double rating;
+    private String name;
+    private int year;
+ 
+    // Used to sort movies by year
+    public int compareTo(Movie m)
+    {
+        return this.year - m.year;
+    }
+ 
+    // Constructor
+    public Movie(String nm, double rt, int yr)
+    {
+        this.name = nm;
+        this.rating = rt;
+        this.year = yr;
+    }
+ 
+    // Getter methods for accessing private data
+    public double getRating() { return rating; }
+    public String getName()   {  return name; }
+    public int getYear()      {  return year;  }
+}
+ 
+// Class to compare Movies by ratings
+class RatingCompare implements Comparator<Movie>
+{
+    public int compare(Movie m1, Movie m2)
+    {
+        if (m1.getRating() < m2.getRating()) return -1;
+        if (m1.getRating() > m2.getRating()) return 1;
+        else return 0;
+    }
+}
+ 
+// Class to compare Movies by name
+class NameCompare implements Comparator<Movie>
+{
+    public int compare(Movie m1, Movie m2)
+    {
+        return m1.getName().compareTo(m2.getName());
+    }
+}
+ 
+// Driver class
+class Main
+{
+    public static void main(String[] args)
+    {
+        ArrayList<Movie> list = new ArrayList<Movie>();
+        list.add(new Movie("Force Awakens", 8.3, 2015));
+        list.add(new Movie("Star Wars", 8.7, 1977));
+        list.add(new Movie("Empire Strikes Back", 8.8, 1980));
+        list.add(new Movie("Return of the Jedi", 8.4, 1983));
+ 
+        // Sort by rating : (1) Create an object of ratingCompare
+        //                  (2) Call Collections.sort
+        //                  (3) Print Sorted list
+        System.out.println("Sorted by rating");
+        RatingCompare ratingCompare = new RatingCompare();
+        Collections.sort(list, ratingCompare);
+        for (Movie movie: list)
+            System.out.println(movie.getRating() + " " +
+                               movie.getName() + " " +
+                               movie.getYear());
+ 
+ 
+        // Call overloaded sort method with RatingCompare
+        // (Same three steps as above)
+        System.out.println("\nSorted by name");
+        NameCompare nameCompare = new NameCompare();
+        Collections.sort(list, nameCompare);
+        for (Movie movie: list)
+            System.out.println(movie.getName() + " " +
+                               movie.getRating() + " " +
+                               movie.getYear());
+ 
+        // Uses Comparable to sort by year
+        System.out.println("\nSorted by year");
+        Collections.sort(list);
+        for (Movie movie: list)
+            System.out.println(movie.getYear() + " " +
+                               movie.getRating() + " " +
+                               movie.getName()+" ");
+    }
+} 

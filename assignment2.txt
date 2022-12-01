@@ -1,0 +1,107 @@
+1) Create a branch   from master/main 
+2) add change to master 
+3)create a pull request with appropriate command 
+4) merge the pull request
+Assignment: Memory Management in Java 
+Focus:  where variables are created & scope of various types of variables( e.g method local, static , etc )
+1) study the methods of Object class
+
+Assignment : (First priority task)
+write  Add method  using generics to add any type ( note: for string ,char you can just concatenate)
+1) what is generic in java
+ans :Generics was added in Java 5 to provide compile-time type checking and removing risk of ClassCastException that was common while working with collection classes. The whole collection framework was re-written to use generics for type-safety. Let’s see how generics help us using collection classes safely.
+2) what is generic class in java
+ans:-We can define our own classes with generics type. A generic type is a class or interface that is parameterized over types. We use angle brackets (<>) to specify the type parameter. To understand the benefit, let’s say we have a simple class as:
+3) what is Generic type
+Java Generic Type Naming convention helps us understanding code easily and having a naming convention is one of the best practices of Java programming language. So generics also comes with its own naming conventions. Usually, type parameter names are single, uppercase letters to make it easily distinguishable from java variables. The most commonly used type parameter names are:
+
+E - Element (used extensively by the Java Collections Framework, for example ArrayList, Set etc.)
+K - Key (Used in Map)
+N - Number
+T - Type
+V - Value (Used in Map)
+S,U,V etc. - 2nd, 3rd, 4th types
+4)what is Generic method
+ans:-
+Sometimes we don’t want the whole class to be parameterized, in that case, we can create java generics method. Since the constructor is a special kind of method, we can use generics type in constructors too.
+5)Bounded Type Parameters
+ans:-Bounded Type Parameters come into picture when you want to limit the data types in Generics. For Example, if you want that a particular generic class or method or any interface that should work only for numeric data types, then you can specify that using the “extends” keyword.
+5)Java Generics Wildcard
+ans:-In Java, a Wildcard is denoted by a question mark, ‘?’ that is used to refer to an unknown type. Wildcards are mostly used with generics as a parameter type.
+
+When using Generic Wildcards, you must remember one point that although the object is the superclass of all other classes, the collection of objects (For Example, List<objects>) is not a superclass of all other collections.
+6)Advantages Of Java Generics
+#1) Type Safety
+ans:-Generics ensure Type Safety. This means that type checking is done at compile time rather than at the run time. Thus there is no chance of getting “ClassCastException” during runtime as correct types will be used.
+#2) Code Reusability
+ans:-Using Generics, you need not write separate code for each data type. You can write a single class or method etc. and use it for all data types.
+#3) No Need For Typecasting
+
+ans:-
+As you are using Generics, the compiler knows about the types used, then there is no need for typecasting.
+#4) Implement Generic Algorithms
+You can implement a lot more Generic algorithms when you use Generics to code.
+#5) Compile-Time Checking
+As already mentioned, when you use Generics in your Java program, the compiler checks the types at the compile time thus preventing abnormal termination of the program at runtime.	
+Q #1) Why do we use Generics in Java?
+ans:-Generics ensure type independence i.e. we can provide a type parameter while defining a class/interface/method etc. so that during the actual instantiation we can specify the actual type. This way we also provide code reusability.
+Q #2) Are Generics important in Java?
+ans:-Yes. In fact, Generics are the most important features of Java to ensure type safety i.e. compile-time type checking.
+Q #3) When did Java add Generics?
+ans:-Generics were added to Java in 2004 with J2SE 5.0 with an intention to ensure compile-time type safety in Java.
+Q #4) What is a Generic type?
+ans:-A Generic type is a Generic Class, Interface or Method that is provided with a type parameter. This allows for type safety and code reuse.
+Q #5) Can we use Generics with Array in Java?
+ans:-No. Java does not allow generic arrays.
+
+Assignment: Memory Management in Java 
+Heap:-
+it is a shared runtime data area and stores the actual object in memory.it is instantiated during the virtual machine startup.
+this memory is allocated for all class instances and array . heap can be of fixed or dynamic size
+depending  upon the system`s configuration.
+jvm provides the user control to initialize or vary the size of heap as per the requirement.
+when a new keyword is used ,object is assigned a space in heap , but the reference of the same exists onto the stack.
+there exists one and only one heap for a running jvm process.
+
+Note: Garbage collection in heap area is mandatory. 
+Method Area:-
+it is logical part of the heap area and is created on virtual machine startup.
+this memory is allocated for class structures, method data and constructor field data , and also for interfaces or special method used in class . Heap can be of fixed or dynamic size depending upon the system`s configuration.
+Can be of a fixed size expanded as required by the computation. Needs not to contiguous.
+
+Note: Though method area is logically a part of heap, it may or may not be garbage collected even if garbage collection is compulsory in heap area.
+
+JVM Stacks:-
+A stack is created at the same time when a thread is created and is used to store data and partial results which will be needed while returning value for method and performing dynamic linking.
+Stacks can either be of fixed or dynamic size. The size of a stack can be chosen independently when it is created.
+The memory for stack needs not to be contiguous.
+
+Native method Stacks:-
+Also called as C stacks, native method stacks are not written in Java language. This memory is allocated for each thread when its created. And it can be of fixed or dynamic nature.
+
+Program counter (PC) registers:-
+Each JVM thread which carries out the task of a specific method has a program counter register associated with it. The non native method has a PC which stores the address of the available JVM instruction whereas in a native method, the value of program counter is undefined. PC register is capable of storing the return address or a native pointer on some specific platform.
+
+Garbage Collector:-
+JVM triggers this process and as per the JVM garbage collection process is done or else withheld. It reduces the burden of programmer by automatically performing the allocation or deallocation of memory.
+Garbage collection process causes the rest of the processes or threads to be paused and thus is costly in nature. This problem is unacceptable for the client but can be eliminated by applying several garbage collector based algorithms. This process of applying algorithm is often termed as Garbage Collector tuning and is important for improving the performance of a program.
+In the current scenario, all garbage collectors are generational, and hence, optimal.
+
+Note: System.gc() and Runtime.gc() are the methods which requests for Garbage collection to JVM explicitly but it doesn’t ensures garbage collection as the final decision of garbage collection is of JVM only.
+
+assignment
+1) Create a branch   from master/main 
+git checkout -b main
+git branch
+2) add change to master 
+git checkout -b master
+git branch
+3)create a pull request with appropriate command 
+git pull repogistry path
+4) merge the pull request
+git pull 
+
+
+
+
+

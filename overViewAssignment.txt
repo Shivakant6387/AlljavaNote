@@ -95,6 +95,16 @@ Assignment: Study Top 20 Generics interview questions and answer with code.
 
 java 8 feature
 1)Interface & Abstract class
+
+1) Consumer 
+2) Biconsumer 
+3) Predicate 
+4) Bipredicate 
+5) Consumer chaining 
+6) PredicateChaining 
+7) BipredicateWithBiconsumer
+8) Function  ( new ) 
+9) Supplier  (new )
 2)Functional interface
 3)Lambda
 4)inbuld functional interface

@@ -109,3 +109,15 @@ java 8 feature
 3)Lambda
 4)inbuld functional interface
 5)constructor (Super keyword)
+Exception handling 
+try catch
+throw
+throws
+Exception hierarchy
+what isdifference checked and unchecked exception
+what is runtime exception
+what is compile time exception
+finally
+stream
+and function
+lambda scop 

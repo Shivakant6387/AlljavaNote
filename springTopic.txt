@@ -1,0 +1,6 @@
+spring initializer
+Adding Rest Get Controller
+Adding Rest Post Controller
+Default Property File
+Profile specific and hierarchical properties
+using YAML instead of Properties

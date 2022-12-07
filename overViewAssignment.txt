@@ -121,3 +121,8 @@ finally
 stream
 and function
 lambda scop 
+[12:12, 07/12/2022] Promod Giit: 1) Write 5 switch class examples 
+2) Difference between String , StringBuilder & StringBuffer 
+3) Study equals and hashcode methods of the Object class 
+4) difference between == and equals
+[12:13, 07/12/2022] Promod Giit: 5) Write 5 switch class examples

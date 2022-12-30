@@ -4,3 +4,12 @@ Adding Rest Post Controller
 Default Property File
 Profile specific and hierarchical properties
 using YAML instead of Properties
+1)Spring Boot @SpringBootApplication Annotation
+ans:-Spring Boot @SpringBootApplication annotation is used to mark a configuration class that declares one or more @Bean methods and also triggers auto-configuration and component scanning. It’s same as declaring a class with @Configuration, @EnableAutoConfiguration and @ComponentScan annotations.
+
+Many Spring Boot developers like their apps to use auto-configuration, component scan and be able to define extra configuration on their "application class". A single @SpringBootApplication annotation can be used to enable those three features, that is:
+
+@EnableAutoConfiguration: enable Spring Boot’s auto-configuration mechanism
+@ComponentScan: enable @Component scan on the package where the application is located (see the best practices)
+@Configuration: allow to register extra beans in the context or import additional configuration classes
+The @SpringBootApplication annotation is equivalent to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes,

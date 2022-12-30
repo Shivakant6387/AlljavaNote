@@ -1,6 +1,14 @@
 If you want an embedded database (H2, HSQL or Derby), please put it on the classpath. If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+repository.properties
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb?useSSL=false
+spring.datasource.username=shiva
+spring.datasource.password=data123456
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 pom.xml
-<dependency>
+	<dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
 </dependency>
@@ -16,3 +24,7 @@ server.port=9080
  @ManyToMany
     @JoinTable(name = "author_book",joinColumns=@JoinColumn(name = "book_id"),inverseJoinColumns = @JoinColumn(name = "author_id"))
 @Component
+
+Spring boot auto-configuration
+ans:- spring boot auto-configuration attempts to automatically configure your spring application
+ based on the jar dependencies that you you have added.	

@@ -1,0 +1,409 @@
+3. What are the new features released in Java 8?
+ans:-
+Some of the important Java 8 features are;
+
+1.forEach() method in Iterable interface
+2.default and static methods in Interfaces
+3.Functional Interfaces and Lambda Expressions
+4.Java Stream API for Bulk Data Operations on Collections
+5.Java Time API
+6.Collection API improvements
+7.Concurrency API improvements
+8.Java IO improvements
+
+4. What are the main benefits of new features introduced in Java
+8?
+ans:- 
+Lambda expressions,
+Method references,
+Functional interfaces,
+Stream API,
+Default methods,
+Base64 Encode Decode,
+Static methods in interface,
+Optional class,
+Collectors class,
+ForEach() method,
+Nashorn JavaScript Engine,
+Parallel Array Sorting,
+Type and Repating Annotations,
+IO Enhancements,
+Concurrency Enhancements,
+JDBC Enhancements etc.
+
+5. What is a Lambda expression in Java 8?
+ans:- Lambda expression helps us to write our code in functional style. It provides a clear and concise way to implement SAM interface(Single Abstract Method) by using an expression. It is very useful in collection library in which it helps to iterate, filter and extract data.
+6. What are the three main parts of a Lambda expression in
+Java?
+
+7. What is the data type of a Lambda expression?
+ans:- A lambda in Java essentially consists of three parts: a parenthesized set of parameters, an arrow, and then a body, which can either be a single expression or a block of Java code. In the case of the example shown in Listing 2, run takes no parameters and returns void, so there are no parameters and no return value. A Comparator<T>-based example, however, highlights this syntax a little more obviously, as shown in Listing 4. Remember that Comparator takes two strings and returns an integer whose value is negative (for “less than”), positive (for “greater than”), and zero (for “equal”).
+
+
+8. Why did Oracle release a new version of Java like Java 8?
+Ans:-Java 8 is a revolutionary release of the world’s #1 development platform. It includes a huge upgrade to the Java programming model and a coordinated evolution of the JVM, Java language, and libraries. Java 8 includes features for productivity, ease of use, improved polyglot programming, security and improved performance. Welcome to the latest iteration of the largest, open, standards-based, community-driven platform.
+
+Java ME 8 is now Generally Available-Java ME 8 is an ideal platform for intelligent devices and an optimal foundation for developers to build new services for the IoT.
+
+9. What are the advantages of a lambda expression?
+Ans:-
+Lambda expressions improve code readability and do not require interpretation. Lambdas allow you to write concise code. It encourages the use of functional programming. It simplifies variable scope and encourages code reusability.
+
+10. What is a Functional interface in Java 8?
+Ans:-
+An Interface that contains exactly one abstract method is known as functional interface. It can have any number of default, static methods but can contain only one abstract method. It can also declare methods of object class.
+
+Functional Interface is also known as Single Abstract Method Interfaces or SAM Interfaces. It is a new feature in Java, which helps to achieve functional programming approach.
+
+11. Why do we need Functional interface in Java?
+Ans:-
+Objects are the base of java programming language and we can never have a function without an Object, that's why Java language provide support for using lambda expressions only with functional interfaces
+or
+Functional Interfaces are mainly used in Lambda expressions, Method reference and constructor references.
+
+In functional programming, code can be treated as data. For this purpose Lambda expressions are introduced. They can be used to pass a block of code to another method or object.
+
+Functional Interface serves as a data type for Lambda expressions. Since a Functional interface contains only one abstract method, the implementation of that method becomes the code that gets passed as an argument to another method.
+
+12. What are the differences between Collection and Stream API
+in Java 8?
+Ans:-
+A stream does not store data.
+An operation on a stream does not modify its source, but simply produces a result.
+Collections have a finite size, but streams do not.
+Like an Iterator, a new stream must be generated to revisit the same elements of the source.
+ or
+ STREAMS        
+It doesn’t store data, it operates on the source data structure i.e collection.
+They use functional interfaces like lambda which makes it a good fit for programming language.
+Java Streams are consumable i.e; to traverse the stream, it needs to be created every time.
+Java streams support both sequential and parallel processing.
+All the Java stream API interfaces and classes are in java.util.stream package.
+Streams are not modifiable i.e one can’t add or remove elements from streams
+Streams are iterated internally by just mentioning the operations.
+
+COLLECTIONS
+It stores/holds all the data that the data structure currently has in a particular data structure like Set, List or Map,
+They don’t use functional interfaces.   
+They are non-consumable i.e; can be traversable multiple times without creating it again.
+It supports parallel processing and parallel processing can be very helpful in achieving high performance.
+Specific classes for primitive types such as IntStream, LongStream, and DoubleStream are used in collections since primitive data types such as int, long in the collections using auto-boxing and these operations could take a lot of time.
+These are modifiable i.e one can easily add to or remove elements from collections.
+Collections are iterated externally using loops.
+13. What are the main uses of Stream APl in Java 8?
+Ans:-
+Introduced in Java 8, the Stream API is used to process collections of objects. A stream is a sequence of objects that supports various methods which can be pipelined to produce the desired result. A stream is not a data structure instead it takes input from the Collections, Arrays or I/O channels.
+or
+Introduced in Java 8, the Stream API is used to process collections of objects. A stream is a sequence of objects that supports various methods which can be pipelined to produce the desired result.
+The features of Java stream are –
+
+A stream is not a data structure instead it takes input from the Collections, Arrays or I/O channels.
+Streams don’t change the original data structure, they only provide the result as per the pipelined methods.
+Each intermediate operation is lazily executed and returns a stream as a result, hence various intermediate operations can be pipelined. Terminal operations mark the end of the stream and return the result.
+
+
+Different Operations On Streams-
+Intermediate Operations:
+
+map: The map method is used to returns a stream consisting of the results of applying the given function to the elements of this stream.
+List number = Arrays.asList(2,3,4,5);
+List square = number.stream().map(x->x*x).collect(Collectors.toList());
+filter: The filter method is used to select elements as per the Predicate passed as argument.
+List names = Arrays.asList("Reflection","Collection","Stream");
+List result = names.stream().filter(s->s.startsWith("S")).collect(Collectors.toList());
+sorted: The sorted method is used to sort the stream.
+List names = Arrays.asList("Reflection","Collection","Stream");
+List result = names.stream().sorted().collect(Collectors.toList());
+Terminal Operations:
+
+collect: The collect method is used to return the result of the intermediate operations performed on the stream.
+List number = Arrays.asList(2,3,4,5,3);
+Set square = number.stream().map(x->x*x).collect(Collectors.toSet());
+forEach: The forEach method is used to iterate through every element of the stream.
+List number = Arrays.asList(2,3,4,5);
+number.stream().map(x->x*x).forEach(y->System.out.println(y));
+reduce: The reduce method is used to reduce the elements of a stream to a single value.
+The reduce method takes a BinaryOperator as a parameter.
+
+
+14. What are the differences between Intermediate and Terminal
+Operations?
+Ans:-
+An intermediate operation is short circuiting in Java, if when presented with infinite input, it may produce a finite stream as a result. Terminal operations are called as short-circuiting if when presented with infinite input, it may terminate in finite time.
+
+15. What is a Spliterator in Java 8?
+Ans:-
+Like Iterator and ListIterator, Spliterator is a Java Iterator, which is used to iterate elements one-by-one from a List implemented object. Some important points about Java Spliterator are: Java Spliterator is an interface in Java Collection API. Spliterator is introduced in Java 8 release in java
+or
+Spliterators, like other Iterators, are for traversing the elements of a source. A source can be a Collection, an IO channel or a generator function.
+
+It is included in JDK 8 for support of efficient parallel traversal(parallel programming) in addition to sequential traversal.
+However, you can use Spliterator even if you won’t be using parallel execution. One reason you might want to do so is because it combines the hasNext and next operations into one method.
+
+
+16. What is Type Inference in Java 8?
+Ans:-Type inference is a feature of Java which provides ability to compiler to look at each method invocation and corresponding declaration to determine the type of arguments.
+
+Java provides improved version of type inference in Java 8.
+17. How does Internal Iteration work in Java 8?
+Ans:-
+Internal Iterators(or Passive Iterators) – Internal Iterators manage the iterations in the background. This leaves the programmer to just declaratively code what is meant to be done with the elements of the Collection, rather than managing the iteration and making sure that all the elements are processed one-by-one
+
+
+18. What are the main advantages of Internal Iterator over
+External Iterator?
+Ans:-
+The main thing that internal iterators have going for them is simplicity and code clarity. External iterators have that extra moving part, the iterator object. In our array example, we not only have the array and the client code, but also the separate ArrayInterator object. 
+
+19. Can we provide implementation of a method in a Java
+Interface?
+Ans:
+The implementation of these methods has to be provided in a separate class. So, if a new method is to be added in an interface, then its implementation code has to be provided in the class implementing the same interface
+
+20. Why do we need Default method in a Java 8 Interface?
+Ans:-
+For creating a default method in java interface, we need to use “default” keyword with the method signature. For example,
+
+package com.journaldev.java8.defaultmethod;
+
+public interface Interface1 {
+
+	void method1(String str);
+	
+	default void log(String str){
+		System.out.println("I1 logging::"+str);
+	}
+}
+or
+Like regular interface methods, default methods are implicitly public; there's no need to specify the public modifier.
+
+Unlike regular interface methods, we declare them with the default keyword at the beginning of the method signature, and they provide an implementation.
+
+
+
+21. What is the purpose of a Static method in an Interface in Java8?
+Ans:-
+Java interface static method is part of interface, we can’t use it for implementation class objects.
+Java interface static methods are good for providing utility methods, for example null check, collection sorting etc.
+Java interface static method helps us in providing security by not allowing implementation classes to override them.
+We can’t define interface static method for Object class methods, we will get compiler error as “This static method cannot hide the instance method from Object”. This is because it’s not allowed in java, since Object is the base class for all the classes and we can’t have one class level static method and another instance method with same signature.
+We can use java interface static methods to remove utility classes such as Collections and move all of it’s static methods to the corresponding interface, that would be easy to find and use.
+
+22. What are the core ideas behind the Date/Time API of Java 82
+Ans:-
+The new API is driven by three core ideas: 
+
+Immutable-value classes. One of the serious weaknesses of the existing formatters in Java is that they aren’t thread-safe. This puts the burden on developers to use them in a thread-safe manner and to think about concurrency problems in their day-to-day development of date-handling code. The new API avoids this issue by ensuring that all its core classes are immutable and represent well-defined values.
+Domain-driven design. The new API models its domain very precisely with classes that represent different use cases for Date and Time closely. This differs from previous Java libraries that were quite poor in that regard. For example, java.util.Date represents an instant on the timeline—a wrapper around the number of milli-seconds since the UNIX epoch—but if you call toString(), the result suggests that it has a time zone, causing confusion among developers.
+
+This emphasis on domain-driven design offers long-term benefits around clarity and understandability, but you might need to think through your application’s domain model of dates when porting from previous APIs to Java SE 8.
+
+Separation of chronologies. The new API allows people to work with different calendaring systems in order to support the needs of users in some areas of the world, such as Japan or Thailand, that don’t necessarily follow ISO-8601. It does so without imposing additional burden on the majority of developers, who need to work only with the standard chronology. 
+
+
+
+23. What are the advantages of new Date and Time APl in Java 8
+over old Date API?
+Ans:-
+New date-time API is introduced in Java 8 to overcome the following drawbacks of old date-time API : Not thread safe : Unlike old java. util. Date which is not thread safe the new date-time API is immutable and doesn't have setter methods.
+or
+New date-time API is introduced in Java 8 to overcome the following drawbacks of old date-time API : 
+
+Not thread safe : Unlike old java.util.Date which is not thread safe the new date-time API is immutable and doesn’t have setter methods.
+
+24. What are the main differences between legacy Date/Time
+APl and Java 8 Date API?
+Ans:-
+New date-time API is introduced in Java 8 to overcome the following drawbacks of old date-time API : 
+
+Not thread safe : Unlike old java.util.Date which is not thread safe the new date-time API is immutable and doesn’t have setter methods.
+Less operations : In old API there are only few date operations but the new API provides us with many date operations.
+Java 8 under the package java.time introduced a new date-time API, most important classes among them are :  
+
+Local : Simplified date-time API with no complexity of timezone handling.
+Zoned : Specialized date-time API to deal with various timezones.
+LocalDate/LocatTime and LocalDateTime API : Use it when time zones are NOT required.
+
+Zoned date-time API : Use it when time zones are to be considered
+
+Period and Duration classes : 
+Period : It deals with date based amount of time. 
+Duration : It deals with time based amount of time.
+
+ChronoUnits Enum : java.time.temporal.ChronoUnit enum is added in Java 8 to replace integer values used in old API to represent day, month etc.
+TemporalAdjuster : It is used to perform various date related operations.
+
+25. How can we get duration between two dates or time in Java
+8?
+Ans:-
+getTime() – d1. getTime(). Use date-time mathematical formula to find the difference between two dates. It returns the years, days, hours, minutes, and seconds between the two specifies dates.
+
+26. What is the new method family introduced in Java 8 for
+processing of Arrays?
+Ans:-
+The method “parallelSort()” is introduced in Java 8. It is a method of java. util. Arrays class.
+or
+Java 8 has enhanced the Arrays class with methods that can run efficiently on multi core machines.
+
+These methods start with keyword parallel.
+Egg. Arrays.parallelSetAll(), Arrays.parallelSort() etc.
+
+This parallel set of methods provides parallel processing of Arrays that can run Java code very fast on a multi core machine.
+or
+The method “parallelSort()” is introduced in Java 8. It is a method of java.util.Arrays class. The parallelSort method is used to sort an array in a parallel fashion. It uses the fork and join approach in which the arrays are forked into smaller units until each unit is easily manageable and then sorted individually.
+
+Then the smaller units are joined together and this entire operation happens in parallel. One prime advantage of this parallelSort method is that it uses multithreading thereby making sorting faster and efficient.
+
+27. How does Java 8 solve Diamond problem of Multiple
+Inheritance?
+Ans:
+For instance, let us assume that Java does support multiple inheritance.
+And if we have an abstract class named Sample with an abstract method demo().
+Then if two other classes in the same package extends this class and try to implement its abstract method, demo().
+Then, as per the basic rule of inheritance, a copy of both demo() methods should be created in the subclass object which leaves the subclass with two methods with same prototype (name and arguments).
+Then, if you call the demo() method using the object of the subclass compiler faces an ambiguous situation not knowing which method to call. This issue is known as diamond problem in Java.
+28. What are the differences between Predicate, Supplier and
+Consumer in Java 8?
+Ans:-
+Consumer
+A Consumer is an in-build functional interface in the java.util.function package. we use consumers when we need to consume objects, the consumer takes an input value and returns nothing. The consumer interface has two methods.
+example
+void accept(T value);
+default Consumer<T> andThen(Consumer<? super T> after);
+
+Predicate
+A Predicate is a functional interface, which accepts an argument and returns a boolean. Usually, it is used to apply in a filter for a collection of objects.
+
+example
+boolean test(T value);
+default Predicate<T> and(Predicate<? super T> other);
+default Predicate<T> negate();
+default Predicate<T> or(Predicate<? super T> other);
+static <T> Predicate<T> isEqual(Object targetRef);
+static <T> Predicate<T> not(Predicate<? super T> target);
+
+Function
+A Function is another in-build functional interface in java.util.function package, the function takes an input value and returns a value. The function interface has four methods, mostly function used in map feature of stream APIs.
+
+example
+R apply(T var1);
+default <V> Function<V, R> compose(Function<V, T> before);
+default <V> Function<T, V> andThen(Function<R, V> after);
+static <T> Function<T, T> identity();
+
+Supplier
+The Supplier Interface is a part of the java.util.function package. It represents a function that does not take in any argument but produces a value of type T. It contains only one method.
+
+T get();
+
+
+29. Is it possible to have default method definition in an
+interface?
+Ans:-
+You specify that a method definition in an interface is a default method with the default keyword at the beginning of the method signature. All method declarations in an interface, including default methods, are implicitly public, so you can omit the public modifier.
+
+30. How Java 8 supports Multiple Inheritance?
+Ans:-
+The Java programming language supports multiple inheritance of type, which is the ability of a class to implement more than one interface. An object can have multiple types: the type of its own class and the types of all the interfaces that the class implements. 
+31. How can you get the name of Parameter in Java by using
+reflection?
+Ans:
+Reflection is an API that is used to examine or modify the behavior of methods, classes, and interfaces at runtime. The required classes for reflection are provided under java.lang.reflect package which is essential in order to understand reflection. So we are illustrating the package with visual aids to have a better understanding as follows: 
+
+java.lang.reflect
+
+Reflection gives us information about the class to which an object belongs and also the methods of that class that can be executed by using the object.
+Through reflection, we can invoke methods at runtime irrespective of the access specifier used with them.
+reflection
+
+ Reflection can be used to get information about class, constructors, and methods as depicted below in tabular format as shown:
+ 
+ or
+ class file, and thus enable the Reflection API to retrieve formal parameter names, compile the source file with the -parameters option to the javac compiler.
+
+The MethodParameterSpy example illustrates how to retrieve the names of the formal parameters of all constructors and methods of a given class.
+32. What is Optional in Java 8?
+Ans:-
+Optional is a container object which may or may not contain a non-null value. You must import java.util package to use this class. If a value is present, isPresent() will return true and get() will return the value. Additional methods that depend on the presence or absence of a contained value are provided, such as orElse() which returns a default value if the value is not present, and ifPresent() which executes a block of code if the value is present. This is a value-based class, i.e their instances are : 
+
+Final and immutable (though may contain references to mutable objects).
+Considered equal solely based on equals(), not based on reference equality(==).
+Do not have accessible constructors.
+
+
+33. How can we get current time by using Date/Time API of Java
+8?
+Ans:-
+With Java 8, a new Date-Time API is introduced to cover the following drawbacks of old date-time API.
+
+Not thread safe − java.util.Date is not thread safe, thus developers have to deal with concurrency issue while using date. The new date-time API is immutable and does not have setter methods.
+
+Poor design − Default Date starts from 1900, month starts from 1, and day starts from 0, so no uniformity. The old API had less direct methods for date operations. The new API provides numerous utility methods for such operations.
+
+Difficult time zone handling − Developers had to write a lot of code to deal with timezone issues. The new API has been developed keeping domain-specific design in mind.
+
+Java 8 introduces a new date-time API under the package java.time. Following are some of the important classes introduced in java.time package.
+
+Local − Simplified date-time API with no complexity of timezone handling.
+
+Zoned − Specialized date-time API to deal with various timezones.
+
+Local Date-Time API
+LocalDate/LocalTime and LocalDateTime classes simplify the development where timezones are not required. Let's see them in action.
+34. Is it possible to define a static method in an Interface?
+Ans:-
+Similar to Default Method in Interface, the static method in an interface can be defined in the interface, but cannot be overridden in Implementation Classes. To use a static method, Interface name should be instantiated with it, as it is a part of the Interface only.
+
+35. How can we analyze the dependencies in Java classes and
+packages?
+Ans:-
+Java class dependency analyzer: jdeps is a new command-line tool introduced in JDK 8 to understand the static dependencies and libraries of application i.e. jdeps command shows the package-level or class-level dependencies of Java class files. The input for jdeps can be a .class file pathname, a JAR file or it can be a fully qualified class name to analyze all class files. Whenever we provide any input to jdeps command line tool then it generates the dependencies to the system console. jdeps introduced with various options which affect the output. As per option, jdeps command-line tool generates the output.
+36. What are the new JVM arguments introduced by Java 8?
+Ans:-
+JVM(Java Virtual Machine) acts as a run-time engine to run Java applications. JVM is the one that actually calls the main method present in a java code. JVM is a part of JRE(Java Runtime Environment).
+When we compile a .java file, .class files(contains byte-code) with the same class names present in .java file are generated by the Java compiler. This .class file goes into various steps when we run it. These steps together describe the whole JVM. 
+
+37. What are the popular annotations introduced in Java 8?
+Ans:-Java 8 has included two new features repeating and type annotations in its prior annotations topic. In early Java versions, you can apply annotations only to declarations.
+
+38. What is a StringJoiner in Java 8?
+Ans:-
+public final class StringJoiner
+extends Object
+StringJoiner is used to construct a sequence of characters separated by a delimiter and optionally starting with a supplied prefix and ending with a supplied suffix.
+Prior to adding something to the StringJoiner, its sj.toString() method will, by default, return prefix + suffix. However, if the setEmptyValue method is called, the emptyValue supplied will be returned instead. This can be used, for example, when creating a string using set notation to indicate an empty set, i.e. "{}", where the prefix is "{", the suffix is "}" and nothing has been added to the StringJoiner.
+
+39. What is the type of a Lambda expression in Java 8?
+Ans:-
+Lambda Expressions were added in Java 8.
+
+A lambda expression is a short block of code which takes in parameters and returns a value. Lambda expressions are similar to methods, but they do not need a name and they can be implemented right in the body of a method.
+
+40. Main differences between an interface with default method
+and an abstract class.
+Ans:-
+From an object-oriented programming perspective, the main difference between an interface and an abstract class is that an interface cannot have state, whereas the abstract class can have state with instance variables.
+
+
+Interfaces
+
+Can only have final static variables. An interface can never change its own state.
+A class can implement multiple interfaces.
+Can be implemented with the implements keyword. An interface can also extend interfaces.
+Can only use static final fields, parameters, or local variables for methods.
+Only functional interfaces can use the lambda feature in Java.
+Can't have constructor.
+Can have abstract methods.
+
+Can have default and static methods (introduced in Java 8).
+
+Can have private methods with the implementation (introduced in Java 9).
+
+Abstract classes
+Can have any kind of instance or static variables, mutable or immutable.
+A class can extend only one abstract class.
+Can only be extended.
+Can have instance mutable fields, parameters, or local variables.
+Abstract classes with only one abstract method cannot use lambdas.
+Can have constructor.
+Can have any kind of methods.

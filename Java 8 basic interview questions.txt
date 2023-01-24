@@ -81,6 +81,17 @@ Java streams support both sequential and parallel processing.
 All the Java stream API interfaces and classes are in java.util.stream package.
 Streams are not modifiable i.e one can’t add or remove elements from streams
 Streams are iterated internally by just mentioning the operations.
+example
+public class StreamsExample {
+   public static void main(String[] args) {
+
+      List<String> laptopList = new ArrayList<>();
+      laptopList.add("HCL");
+      laptopList.add("Apple");
+      laptopList.add("Dell");
+      laptopList.stream().sorted().forEach(System.out::println);
+   }
+}
 
 COLLECTIONS
 It stores/holds all the data that the data structure currently has in a particular data structure like Set, List or Map,
@@ -90,6 +101,23 @@ It supports parallel processing and parallel processing can be very helpful in a
 Specific classes for primitive types such as IntStream, LongStream, and DoubleStream are used in collections since primitive data types such as int, long in the collections using auto-boxing and these operations could take a lot of time.
 These are modifiable i.e one can easily add to or remove elements from collections.
 Collections are iterated externally using loops.
+example
+public class CollectiosExample {
+   public static void main(String[] args) {
+
+      List<String> laptopList = new ArrayList<>();
+      laptopList.add("HCL");
+      laptopList.add("Apple");
+      laptopList.add("Dell");
+      Comparator<String> com = (String o1, String o2)->o1.compareTo(o2);
+
+      Collections.sort(laptopList,com);
+
+      for (String name : laptopList) {
+         System.out.println(name);
+      }
+   }
+}
 13. What are the main uses of Stream APl in Java 8?
 Ans:-
 Introduced in Java 8, the Stream API is used to process collections of objects. A stream is a sequence of objects that supports various methods which can be pipelined to produce the desired result. A stream is not a data structure instead it takes input from the Collections, Arrays or I/O channels.
@@ -124,13 +152,77 @@ List number = Arrays.asList(2,3,4,5);
 number.stream().map(x->x*x).forEach(y->System.out.println(y));
 reduce: The reduce method is used to reduce the elements of a stream to a single value.
 The reduce method takes a BinaryOperator as a parameter.
-
-
+example
+//a simple program to demonstrate the use of stream in java
+import java.util.*;
+import java.util.stream.*;
+  
+class Demo
+{
+  public static void main(String args[])
+  {
+  
+    // create a list of integers
+    List<Integer> number = Arrays.asList(2,3,4,5);
+  
+    // demonstration of map method
+    List<Integer> square = number.stream().map(x -> x*x).
+                           collect(Collectors.toList());
+    System.out.println(square);
+  
+    // create a list of String
+    List<String> names =
+                Arrays.asList("Reflection","Collection","Stream");
+  
+    // demonstration of filter method
+    List<String> result = names.stream().filter(s->s.startsWith("S")).
+                          collect(Collectors.toList());
+    System.out.println(result);
+  
+    // demonstration of sorted method
+    List<String> show =
+            names.stream().sorted().collect(Collectors.toList());
+    System.out.println(show);
+  
+    // create a list of integers
+    List<Integer> numbers = Arrays.asList(2,3,4,5,2);
+  
+    // collect method returns a set
+    Set<Integer> squareSet =
+         numbers.stream().map(x->x*x).collect(Collectors.toSet());
+    System.out.println(squareSet);
+  
+    // demonstration of forEach method
+    number.stream().map(x->x*x).forEach(y->System.out.println(y));
+  
+    // demonstration of reduce method
+    int even =
+       number.stream().filter(x->x%2==0).reduce(0,(ans,i)-> ans+i);
+  
+    System.out.println(even);
+  }
+}
 14. What are the differences between Intermediate and Terminal
 Operations?
 Ans:-
 An intermediate operation is short circuiting in Java, if when presented with infinite input, it may produce a finite stream as a result. Terminal operations are called as short-circuiting if when presented with infinite input, it may terminate in finite time.
+example
+public class Main {
+   public static void main(String args[]) throws InterruptedException, ExecutionException {
+      List<String> laptopList = new ArrayList();
+      laptopList.add("DELL");
+      laptopList.add("ACER");
+      laptopList.add("HCL");
 
+      // Intermediate operation
+      laptopList.sort((p1, p2) -> p1.compareTo(p2));
+
+      // Terminal Operation
+      laptopList.forEach(a -> {
+         System.out.println(a);
+      });
+   }
+}
 15. What is a Spliterator in Java 8?
 Ans:-
 Like Iterator and ListIterator, Spliterator is a Java Iterator, which is used to iterate elements one-by-one from a List implemented object. Some important points about Java Spliterator are: Java Spliterator is an interface in Java Collection API. Spliterator is introduced in Java 8 release in java
@@ -145,10 +237,49 @@ However, you can use Spliterator even if you won’t be using parallel execution
 Ans:-Type inference is a feature of Java which provides ability to compiler to look at each method invocation and corresponding declaration to determine the type of arguments.
 
 Java provides improved version of type inference in Java 8.
+example
+import java.util.ArrayList;  
+import java.util.List;  
+public class TypeInferenceExample {  
+    public static void showList(List<Integer>list){  
+        if(!list.isEmpty()){  
+            list.forEach(System.out::println);  
+        }else System.out.println("list is empty");  
+    }  
+    public static void main(String[] args) {  
+        // An old approach(prior to Java 7) to create a list  
+        List<Integer> list1 = new ArrayList<Integer>();  
+        list1.add(11);  
+        showList(list1);  
+        // Java 7    
+        List<Integer> list2 = new ArrayList<>(); // You can left it blank, compiler can infer type  
+        list2.add(12);  
+        showList(list2);  
+        // Compiler infers type of ArrayList, in Java 8  
+        showList(new ArrayList<>());  
+    }  
+}  
 17. How does Internal Iteration work in Java 8?
 Ans:-
 Internal Iterators(or Passive Iterators) – Internal Iterators manage the iterations in the background. This leaves the programmer to just declaratively code what is meant to be done with the elements of the Collection, rather than managing the iteration and making sure that all the elements are processed one-by-one
+example
+package com.zetcode;
 
+import java.util.List;
+
+public class JavaExternalIterationEx {
+
+    public static void main(String[] args) {
+
+        List<String> words = List.of("hello", "sky", "there", "den", "sky");
+
+        for (String word: words) {
+
+            System.out.printf("The word %s has %d characters%n",
+                    word, word.length());
+        }
+    }
+}
 
 18. What are the main advantages of Internal Iterator over
 External Iterator?
@@ -159,6 +290,32 @@ The main thing that internal iterators have going for them is simplicity and cod
 Interface?
 Ans:
 The implementation of these methods has to be provided in a separate class. So, if a new method is to be added in an interface, then its implementation code has to be provided in the class implementing the same interface
+example
+interface FirstInterface {
+  public void myMethod(); // interface method
+}
+
+interface SecondInterface {
+  public void myOtherMethod(); // interface method
+}
+
+// DemoClass "implements" FirstInterface and SecondInterface
+class DemoClass implements FirstInterface, SecondInterface {
+  public void myMethod() {
+    System.out.println("Some text..");
+  }
+  public void myOtherMethod() {
+    System.out.println("Some other text...");
+  }
+}
+
+class MyMainClass {
+  public static void main(String[] args) {
+    DemoClass myObj = new DemoClass();
+    myObj.myMethod();
+    myObj.myOtherMethod();
+  }
+}
 
 20. Why do we need Default method in a Java 8 Interface?
 Ans:-
@@ -188,6 +345,44 @@ Java interface static methods are good for providing utility methods, for exampl
 Java interface static method helps us in providing security by not allowing implementation classes to override them.
 We can’t define interface static method for Object class methods, we will get compiler error as “This static method cannot hide the instance method from Object”. This is because it’s not allowed in java, since Object is the base class for all the classes and we can’t have one class level static method and another instance method with same signature.
 We can use java interface static methods to remove utility classes such as Collections and move all of it’s static methods to the corresponding interface, that would be easy to find and use.
+example
+// Java program to demonstrate
+// static method in Interface.
+ 
+interface NewInterface {
+ 
+    // static method
+    static void hello()
+    {
+        System.out.println("Hello, New Static Method Here");
+    }
+ 
+    // Public and abstract method of Interface
+    void overrideMethod(String str);
+}
+ 
+// Implementation Class
+public class InterfaceDemo implements NewInterface {
+ 
+    public static void main(String[] args)
+    {
+        InterfaceDemo interfaceDemo = new InterfaceDemo();
+ 
+        // Calling the static method of interface
+        NewInterface.hello();
+ 
+        // Calling the abstract method of interface
+        interfaceDemo.overrideMethod("Hello, Override Method here");
+    }
+ 
+    // Implementing interface method
+ 
+    @Override
+    public void overrideMethod(String str)
+    {
+        System.out.println(str);
+    }
+}
 
 22. What are the core ideas behind the Date/Time API of Java 82
 Ans:-
@@ -232,11 +427,179 @@ Duration : It deals with time based amount of time.
 
 ChronoUnits Enum : java.time.temporal.ChronoUnit enum is added in Java 8 to replace integer values used in old API to represent day, month etc.
 TemporalAdjuster : It is used to perform various date related operations.
+example
+
+// Java code for LocalDate
+// / LocalTime Function
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+  
+public class Date {
+ 
+public static void LocalDateTimeApi()
+{
+  
+    // the current date
+    LocalDate date = LocalDate.now();
+    System.out.println("the current date is "+
+                        date);
+  
+  
+    // the current time
+    LocalTime time = LocalTime.now();
+    System.out.println("the current time is "+
+                        time);
+      
+  
+    // will give us the current time and date
+    LocalDateTime current = LocalDateTime.now();
+    System.out.println("current date and time : "+
+                        current);
+  
+  
+    // to print in a particular format
+    DateTimeFormatter format =
+      DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"); 
+   
+    String formatedDateTime = current.format(format); 
+    
+    System.out.println("in formatted manner "+
+                        formatedDateTime);
+  
+  
+    // printing months days and seconds
+    Month month = current.getMonth();
+    int day = current.getDayOfMonth();
+    int seconds = current.getSecond();
+    System.out.println("Month : "+month+" day : "+
+                        day+" seconds : "+seconds);
+  
+    // printing some specified date
+    LocalDate date2 = LocalDate.of(1950,1,26);
+    System.out.println("the republic day :"+date2);
+  
+    // printing date with current time.
+    LocalDateTime specificDate =
+        current.withDayOfMonth(24).withYear(2016);
+ 
+    System.out.println("specific date with "+
+                       "current time : "+specificDate);
+}
+ 
+    // Driver code
+    public static void main(String[] args)
+    {
+        LocalDateTimeApi();
+    }
+}
 
 25. How can we get duration between two dates or time in Java
 8?
 Ans:-
 getTime() – d1. getTime(). Use date-time mathematical formula to find the difference between two dates. It returns the years, days, hours, minutes, and seconds between the two specifies dates.
+example
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+ 
+class GFG {
+ 
+    // Function to print difference in
+    // time start_date and end_date
+    static void
+    findDifference(String start_date,
+                   String end_date)
+    {
+ 
+        // SimpleDateFormat converts the
+        // string format to date object
+        SimpleDateFormat sdf
+            = new SimpleDateFormat(
+                "dd-MM-yyyy HH:mm:ss");
+ 
+        // Try Block
+        try {
+ 
+            // parse method is used to parse
+            // the text from a string to
+            // produce the date
+            Date d1 = sdf.parse(start_date);
+            Date d2 = sdf.parse(end_date);
+ 
+            // Calculate time difference
+            // in milliseconds
+            long difference_In_Time
+                = d2.getTime() - d1.getTime();
+ 
+            // Calculate time difference in
+            // seconds, minutes, hours, years,
+            // and days
+            long difference_In_Seconds
+                = (difference_In_Time
+                   / 1000)
+                  % 60;
+ 
+            long difference_In_Minutes
+                = (difference_In_Time
+                   / (1000 * 60))
+                  % 60;
+ 
+            long difference_In_Hours
+                = (difference_In_Time
+                   / (1000 * 60 * 60))
+                  % 24;
+ 
+            long difference_In_Years
+                = (difference_In_Time
+                   / (1000l * 60 * 60 * 24 * 365));
+ 
+            long difference_In_Days
+                = (difference_In_Time
+                   / (1000 * 60 * 60 * 24))
+                  % 365;
+ 
+            // Print the date difference in
+            // years, in days, in hours, in
+            // minutes, and in seconds
+ 
+            System.out.print(
+                "Difference "
+                + "between two dates is: ");
+ 
+            System.out.println(
+                difference_In_Years
+                + " years, "
+                + difference_In_Days
+                + " days, "
+                + difference_In_Hours
+                + " hours, "
+                + difference_In_Minutes
+                + " minutes, "
+                + difference_In_Seconds
+                + " seconds");
+        }
+ 
+        // Catch the Exception
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+ 
+    // Driver Code
+    public static void main(String[] args)
+    {
+        // Given start Date
+        String start_date
+            = "10-01-2018 01:10:20";
+ 
+        // Given end Date
+        String end_date
+            = "10-06-2020 06:30:50";
+ 
+        // Function Call
+        findDifference(start_date, end_date);
+    }
+}
 
 26. What is the new method family introduced in Java 8 for
 processing of Arrays?
@@ -253,6 +616,23 @@ or
 The method “parallelSort()” is introduced in Java 8. It is a method of java.util.Arrays class. The parallelSort method is used to sort an array in a parallel fashion. It uses the fork and join approach in which the arrays are forked into smaller units until each unit is easily manageable and then sorted individually.
 
 Then the smaller units are joined together and this entire operation happens in parallel. One prime advantage of this parallelSort method is that it uses multithreading thereby making sorting faster and efficient.
+example
+import java.util.Arrays; 
+class Main { 
+    public static void main(String[] args) 
+    { 
+        //declare array of ints
+        int[] ints = new int[100];
+        //fill array with value 10
+        Arrays.fill(ints, 10);
+        //maps array stream to random numbers and calculates sum of the elements
+        int sum = Arrays.stream(ints)
+                  .map(i -> (int) (Math.random() * i))
+                  .sum();
+        //print the sum
+        System.out.println("The sum of the random array elements: " + sum);
+    } 
+}
 
 27. How does Java 8 solve Diamond problem of Multiple
 Inheritance?
@@ -262,6 +642,30 @@ And if we have an abstract class named Sample with an abstract method demo().
 Then if two other classes in the same package extends this class and try to implement its abstract method, demo().
 Then, as per the basic rule of inheritance, a copy of both demo() methods should be created in the subclass object which leaves the subclass with two methods with same prototype (name and arguments).
 Then, if you call the demo() method using the object of the subclass compiler faces an ambiguous situation not knowing which method to call. This issue is known as diamond problem in Java.
+example
+interface MyInterface1{  
+   public static int num = 100;
+   public default void display() {
+      System.out.println("display method of MyInterface1");
+   }
+}
+interface MyInterface2{  
+   public static int num = 1000;
+   public default void display() {
+      System.out.println("display method of MyInterface2");
+   }
+}  
+public class InterfaceExample implements MyInterface1, MyInterface2{
+   public void display() {
+      MyInterface1.super.display();
+      //or,
+      MyInterface2.super.display();
+   }      
+   public static void main(String args[]) {
+      InterfaceExample obj = new InterfaceExample();
+      obj.display();
+   }
+}
 28. What are the differences between Predicate, Supplier and
 Consumer in Java 8?
 Ans:-
@@ -301,10 +705,69 @@ T get();
 interface?
 Ans:-
 You specify that a method definition in an interface is a default method with the default keyword at the beginning of the method signature. All method declarations in an interface, including default methods, are implicitly public, so you can omit the public modifier.
+example
+// A simple program to Test Interface default
+// methods in java
+interface TestInterface
+{
+    // abstract method
+    public void square(int a);
+  
+    // default method
+    default void show()
+    {
+      System.out.println("Default Method Executed");
+    }
+}
+  
+class TestClass implements TestInterface
+{
+    // implementation of square abstract method
+    public void square(int a)
+    {
+        System.out.println(a*a);
+    }
+  
+    public static void main(String args[])
+    {
+        TestClass d = new TestClass();
+        d.square(4);
+  
+        // default method executed
+        d.show();
+    }
+}
 
 30. How Java 8 supports Multiple Inheritance?
 Ans:-
 The Java programming language supports multiple inheritance of type, which is the ability of a class to implement more than one interface. An object can have multiple types: the type of its own class and the types of all the interfaces that the class implements. 
+example
+package org.example;
+
+interface Poet{
+    default void write() { System.out.println("Poet's default method");
+    }
+}
+interface Writer { default void write() {
+    System.out.println("Writer's default method");
+    }
+}
+
+public class Multitalented implements Poet,Writer {
+
+
+    public static void main(String args[]) {
+        Multitalented john = new Multitalented();
+        john.write(); // which write method to call, from Poet // or, from Writer 
+
+    }
+
+    @Override
+    public void write() {
+        System.out.println("writing stories now days");
+    }
+}
+
 31. How can you get the name of Parameter in Java by using
 reflection?
 Ans:
@@ -322,6 +785,27 @@ reflection
  class file, and thus enable the Reflection API to retrieve formal parameter names, compile the source file with the -parameters option to the javac compiler.
 
 The MethodParameterSpy example illustrates how to retrieve the names of the formal parameters of all constructors and methods of a given class.
+package com.w3spoint;
+ 
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+ 
+public class ReflectionTest {
+	public static void main(String args[]){
+		try {
+			Class c=Class.forName("com.w3spoint.TestClass");  
+			Method method = c.getMethod("display", String.class);
+			Parameter[] parameters = method.getParameters();
+			//We can also use getParameterTypes() to get parameter type list
+			for(int i=0; i<parameters.length; i++){
+				System.out.println("Parameter name: " + parameters[i].getName());
+				System.out.println("Parameter Type: " + parameters[i].getType());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  
+	}
+}
 32. What is Optional in Java 8?
 Ans:-
 Optional is a container object which may or may not contain a non-null value. You must import java.util package to use this class. If a value is present, isPresent() will return true and get() will return the value. Additional methods that depend on the presence or absence of a contained value are provided, such as orElse() which returns a default value if the value is not present, and ifPresent() which executes a block of code if the value is present. This is a value-based class, i.e their instances are : 
@@ -329,6 +813,21 @@ Optional is a container object which may or may not contain a non-null value. Yo
 Final and immutable (though may contain references to mutable objects).
 Considered equal solely based on equals(), not based on reference equality(==).
 Do not have accessible constructors.
+example
+package org.example;
+
+import java.util.Optional;
+
+public class OptionalDemo {
+    public static void main(String[] args) {
+        String []str=new String[5];
+        str[2]="Geeks classes are coming soon";
+        Optional<String>empty=Optional.empty();
+        System.out.println(empty);
+        Optional<String> value=Optional.of(str[2]);
+        System.out.println(value);
+    }
+}
 
 
 33. How can we get current time by using Date/Time API of Java
@@ -350,14 +849,85 @@ Zoned − Specialized date-time API to deal with various timezones.
 
 Local Date-Time API
 LocalDate/LocalTime and LocalDateTime classes simplify the development where timezones are not required. Let's see them in action.
+example
+import java.time.LocalDateTime;  
+import java.time.format.DateTimeFormatter;  
+    
+public class CurrentDateTimeExample5   
+{      
+  // main method  
+  public static void main(String[] argvs)   
+  {      
+        System.out.println(java.time.LocalDateTime.now());    
+  }      
+}  
 34. Is it possible to define a static method in an Interface?
 Ans:-
 Similar to Default Method in Interface, the static method in an interface can be defined in the interface, but cannot be overridden in Implementation Classes. To use a static method, Interface name should be instantiated with it, as it is a part of the Interface only.
+example
+// Java program to demonstrate
+// static method in Interface.
+ 
+interface NewInterface {
+ 
+    // static method
+    static void hello()
+    {
+        System.out.println("Hello, New Static Method Here");
+    }
+ 
+    // Public and abstract method of Interface
+    void overrideMethod(String str);
+}
+ 
+// Implementation Class
+public class InterfaceDemo implements NewInterface {
+ 
+    public static void main(String[] args)
+    {
+        InterfaceDemo interfaceDemo = new InterfaceDemo();
+ 
+        // Calling the static method of interface
+        NewInterface.hello();
+ 
+        // Calling the abstract method of interface
+        interfaceDemo.overrideMethod("Hello, Override Method here");
+    }
+ 
+    // Implementing interface method
+ 
+    @Override
+    public void overrideMethod(String str)
+    {
+        System.out.println(str);
+    }
+}
 
 35. How can we analyze the dependencies in Java classes and
 packages?
 Ans:-
 Java class dependency analyzer: jdeps is a new command-line tool introduced in JDK 8 to understand the static dependencies and libraries of application i.e. jdeps command shows the package-level or class-level dependencies of Java class files. The input for jdeps can be a .class file pathname, a JAR file or it can be a fully qualified class name to analyze all class files. Whenever we provide any input to jdeps command line tool then it generates the dependencies to the system console. jdeps introduced with various options which affect the output. As per option, jdeps command-line tool generates the output.
+example
+import java.util.List;
+import java.util.ArrayList;
+  
+class Geeks {
+    public static void main(String args[])
+    {
+  
+        List<String> list1 = new ArrayList<>();
+        List<String> list2 = new ArrayList<>();
+        List<String> list3 = new ArrayList<>();
+  
+        list1.add("Geeks");
+        list2.add("for");
+        list3.add("geeks");
+  
+        System.out.println(list1);
+        System.out.println(list2);
+        System.out.println(list3);
+    }
+}
 36. What are the new JVM arguments introduced by Java 8?
 Ans:-
 JVM(Java Virtual Machine) acts as a run-time engine to run Java applications. JVM is the one that actually calls the main method present in a java code. JVM is a part of JRE(Java Runtime Environment).
@@ -365,6 +935,41 @@ When we compile a .java file, .class files(contains byte-code) with the same cla
 
 37. What are the popular annotations introduced in Java 8?
 Ans:-Java 8 has included two new features repeating and type annotations in its prior annotations topic. In early Java versions, you can apply annotations only to declarations.
+or
+With Java 8, annotations can now also be written on any use of a type such as types in declarations, generics, and casts:
+
+@Encrypted String data;
+List<@NonNull String> strings;
+myGraph = (@Immutable Graph) tmpGraph;
+At first glance, type annotations aren't the sexiest feature of the new Java release.
+example
+import java.lang.annotation.Repeatable;  
+import java.lang.annotation.Retention;  
+import java.lang.annotation.RetentionPolicy;  
+// Declaring repeatable annotation type  
+@Repeatable(Games.class)  
+@interfaceGame{  
+    String name();  
+    String day();  
+}  
+// Declaring container for repeatable annotation type  
+@Retention(RetentionPolicy.RUNTIME)  
+@interfaceGames{  
+    Game[] value();  
+}  
+// Repeating annotation  
+@Game(name = "Cricket",  day = "Sunday")  
+@Game(name = "Hockey",   day = "Friday")  
+@Game(name = "Football", day = "Saturday")  
+public class RepeatingAnnotationsExample {  
+    public static void main(String[] args) {  
+        // Getting annotation by type into an array  
+        Game[] game = RepeatingAnnotationsExample.class.getAnnotationsByType(Game.class);  
+        for (Gamegame2 : game) {    // Iterating values  
+            System.out.println(game2.name()+" on "+game2.day());  
+        }  
+    }  
+}  
 
 38. What is a StringJoiner in Java 8?
 Ans:-
@@ -373,11 +978,60 @@ extends Object
 StringJoiner is used to construct a sequence of characters separated by a delimiter and optionally starting with a supplied prefix and ending with a supplied suffix.
 Prior to adding something to the StringJoiner, its sj.toString() method will, by default, return prefix + suffix. However, if the setEmptyValue method is called, the emptyValue supplied will be returned instead. This can be used, for example, when creating a string using set notation to indicate an empty set, i.e. "{}", where the prefix is "{", the suffix is "}" and nothing has been added to the StringJoiner.
 
+example
+package org.example;
+
+import java.util.StringJoiner;
+
+public class StringJoinerExample {
+    public static void main(String[] args) {
+        StringJoiner stringJoiner=new StringJoiner(",");
+        stringJoiner.add("Rahul");
+        stringJoiner.add("Raju");
+        stringJoiner.add("Sakshi");
+        stringJoiner.add("Amrita");
+        System.out.println(stringJoiner);
+    }
+}
+
+
 39. What is the type of a Lambda expression in Java 8?
 Ans:-
+Java lambda expression is consisted of three components.
+
+1) Argument-list: It can be empty or non-empty as well.
+
+2) Arrow-token: It is used to link arguments-list and body of expression.
+
+3) Body: It contains expressions and statements for lambda expression.
+
+or
+
 Lambda Expressions were added in Java 8.
 
 A lambda expression is a short block of code which takes in parameters and returns a value. Lambda expressions are similar to methods, but they do not need a name and they can be implemented right in the body of a method.
+
+Example
+package org.example;
+
+public interface Drawable {
+    public void draw();
+}
+
+package org.example;
+
+public class LambdaExpressionExample {
+    public static void main(String[] args) {
+        int width=10;
+        Drawable drawable=new Drawable() {
+            @Override
+            public void draw() {
+                System.out.println("Drawing"+width);
+            }
+        };
+        drawable.draw();
+    }
+}
 
 40. Main differences between an interface with default method
 and an abstract class.
@@ -407,3 +1061,30 @@ Can have instance mutable fields, parameters, or local variables.
 Abstract classes with only one abstract method cannot use lambdas.
 Can have constructor.
 Can have any kind of methods.
+example
+package org.example;
+
+public interface DefaultStaticExampleInterface {
+    default void show(){
+        System.out.println("In java 8 default method - DefaultExampleInterface ");
+    }
+    static void display(){
+        System.out.println("In default static example interface I");
+    }
+}
+
+package org.example;
+
+public class DefaultStaticExampleClass implements DefaultStaticExampleInterface {
+
+}
+package org.example;
+
+public class MainTest {
+    public static void main(String[] args) {
+        DefaultStaticExampleInterface.display();
+        DefaultStaticExampleClass defaultStaticExampleClass=new DefaultStaticExampleClass();
+        defaultStaticExampleClass.show();
+    }
+}
+

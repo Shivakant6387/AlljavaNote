@@ -1,7 +1,6 @@
 3. What are the new features released in Java 8?
 ans:-
 Some of the important Java 8 features are;
-
 1.forEach() method in Iterable interface
 2.default and static methods in Interfaces
 3.Functional Interfaces and Lambda Expressions
@@ -35,7 +34,8 @@ JDBC Enhancements etc.
 ans:- Lambda expression helps us to write our code in functional style. It provides a clear and concise way to implement SAM interface(Single Abstract Method) by using an expression. It is very useful in collection library in which it helps to iterate, filter and extract data.
 6. What are the three main parts of a Lambda expression in
 Java?
-
+Ans:-
+A lambda in Java essentially consists of three parts: a parenthesized set of parameters, an arrow, and then a body, which can either be a single expression or a block of Java code. 
 7. What is the data type of a Lambda expression?
 ans:- A lambda in Java essentially consists of three parts: a parenthesized set of parameters, an arrow, and then a body, which can either be a single expression or a block of Java code. In the case of the example shown in Listing 2, run takes no parameters and returns void, so there are no parameters and no return value. A Comparator<T>-based example, however, highlights this syntax a little more obviously, as shown in Listing 4. Remember that Comparator takes two strings and returns an integer whose value is negative (for “less than”), positive (for “greater than”), and zero (for “equal”).
 
